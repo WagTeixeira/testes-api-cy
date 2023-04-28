@@ -36,6 +36,7 @@ describe('Testes da Funcionalidade Usuários', () => {
     it.only('Deve validar um usuário com email inválido', () => {
         cy.cadastroUsuario('Guilherme Caio', 'jjcaio.com', 'Fts45574')    
             .then((response) => {
+                expect(response.body.email).to.equal('email deve ser um email válido')
                 expect(response.status).to.equal(400)
             })  
     });
